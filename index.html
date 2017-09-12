@@ -1,0 +1,609 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>ScopeAI API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#pagination" class="toc-h1 toc-link" data-title="Pagination">Pagination</a>
+          </li>
+          <li>
+            <a href="#tickets" class="toc-h1 toc-link" data-title="Tickets">Tickets</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-ticket-object" class="toc-h2 toc-link" data-title="Tickets">The Ticket Object</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-tickets" class="toc-h2 toc-link" data-title="Tickets">Get All Tickets</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-ticket" class="toc-h2 toc-link" data-title="Tickets">Get a Specific Ticket</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#tags" class="toc-h1 toc-link" data-title="Tags">Tags</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-tag-object" class="toc-h2 toc-link" data-title="Tags">The Tag Object</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-tags" class="toc-h2 toc-link" data-title="Tags">Get All Tags</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-tag" class="toc-h2 toc-link" data-title="Tags">Get a Specific Tag</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><a href='https://www.getscopeai.com/company/api_keys'>Sign Up for an API Key</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the ScopeAI API! You can use our API to access ScopeAI API endpoints, where you can pull all of your customer conversation data along with its associated metadata.</p>
+
+<p>We currently don&#39;t get have any language bindings, but please drop us a note if having a specific language binding would be helpful. You can view request examples in the dark area to the right.</p>
+
+<p>The code behind this API documentation page can be found on <a href="https://github.com/scopeai/slate">github</a>; please create an issue or pull request for any changes you&#39;d like to see implemented. This API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>.</p>
+<h1 id='authentication'>Authentication</h1><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>pLac3keYh3r3</code> with your API key.</p>
+</blockquote>
+
+<p>ScopeAI uses API keys as tokens to allow access to the API. You can register for new API key in the api page of your company found <a href="https://wwww.getscopeai.com/company/api_keys">here</a>.</p>
+
+<p>ScopeAI expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: Token token=pLac3keYh3r3</code></p>
+
+<aside class="notice">
+You must replace <code>pLac3keYh3r3</code> with your personal API key.
+</aside>
+<h1 id='pagination'>Pagination</h1>
+<blockquote>
+<p>Example paging header</p>
+</blockquote>
+<pre class="highlight plaintext"><code>Link: &lt;https://api.getscopeai.com/v1/tickets?page=2&amp;per_page=2&gt;; rel="next",
+&lt;https://api.getscopeai.com/v1/tickets?page=474&amp;per_page=2&gt;; rel="last"
+</code></pre>
+<p>API methods that return a collection of results are always paginated. Paginated results will include a <code>Link</code> (see <a href="https://tools.ietf.org/html/rfc5988">RFC-5988</a>) response header with the following information.</p>
+
+<ul>
+<li><code>next</code>. The corresponding URL is the link to the next page.</li>
+<li><code>prev</code>. The corresponding URL is the link to the previous page.</li>
+<li><code>last</code>. The corresponding URL is the link to the last page.</li>
+</ul>
+
+<p>Note that when this header is not set, there is only one page, the first page, of results.</p>
+<h1 id='tickets'>Tickets</h1><h2 id='the-ticket-object'>The Ticket Object</h2><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Mary. </span><span class="se">\n</span><span class="s2"> Would it be possible to delete a user from
+    the company settings page? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Robert </span><span class="se">\n</span><span class="s2"> CEO of Rosemary Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cleanest_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Would it be possible to delete a user from the company settings page?"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tag_relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A ticket represents a message from a customer to a company. ScopeAI&#39;s definition of a ticket
+is likely to be equivalent to your system of record&#39;s definition of a ticket.</p>
+<h3 id='notable-attributes'>Notable Attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>source</td>
+<td>The system of record from where the customer service ticket was imported.</td>
+</tr>
+<tr>
+<td>external_id</td>
+<td>The id of the ticket from the system of record from where the ticket was imported.</td>
+</tr>
+<tr>
+<td>original_text</td>
+<td>The text of the ticket that was received from the system of record.</td>
+</tr>
+<tr>
+<td>cleanest_body</td>
+<td>The ticket body after ScopeAI has scrapped off headers, footers, and other extraneous text.</td>
+</tr>
+<tr>
+<td>tag_relationships</td>
+<td>A list of objects that represent the relationship this ticket has with a tag. Contains the <code>tag_id</code> which can be used to obtain the tag object, the <code>salience_score</code> which reflects the tags relevance to the overall text and <code>sentiment_score</code> which, if available, represents the sentiment of said tag.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-tickets'>Get All Tickets</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.getscopeai.com/v1/tickets?start_date=1502607600"</span>
+  -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Mary. </span><span class="se">\n</span><span class="s2"> Would it be possible to delete a user from the company settings page? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Robert </span><span class="se">\n</span><span class="s2"> CEO of Rosemary Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cleanest_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Would it be possible to delete a user from the company settings page?"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tag_relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Gary. </span><span class="se">\n</span><span class="s2"> What's the price of adding another superuser? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Bill </span><span class="se">\n</span><span class="s2"> CEO of Mirrors Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cleanest_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What's the price of adding another superuser?"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tag_relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all Tickets.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://api.getscopeai.com/v1/tickets</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start_date</td>
+<td>false</td>
+<td>Return only tickets that were created after this timestamp. Timestamp must be in UNIX time.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>true</td>
+<td>Return only tickets that were created before this timestamp. Timestamp must be in UNIX time.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-ticket'>Get a Specific Ticket</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.getscopeai.com/v1/tickets/3"</span>
+  -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Gary. </span><span class="se">\n</span><span class="s2"> What's the price of adding another superuser? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Bill </span><span class="se">\n</span><span class="s2"> CEO of Mirrors Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cleanest_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What's the price of adding another superuser?"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tag_relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">]</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific Ticket.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://api.getscopeai.com/v1/tickets/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the Ticket to retrieve</td>
+</tr>
+</tbody></table>
+<h1 id='tags'>Tags</h1><h2 id='the-tag-object'>The Tag Object</h2><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settings"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A tag represents an entity or &#39;subject&#39; that has been discovered across multiple customer conversations.</p>
+<h3 id='notable-attributes-2'>Notable Attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>The textual representation of the tag.</td>
+</tr>
+<tr>
+<td>score</td>
+<td>A number representing how salient the tag is to a company.</td>
+</tr>
+<tr>
+<td>tickets_count</td>
+<td>The number of tickets that this tag is associated with.</td>
+</tr>
+<tr>
+<td>relevant</td>
+<td>A boolean representing whether the tag is relevant to the company.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-tags'>Get All Tags</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.getscopeai.com/v1/tags?relevant=true"</span>
+  -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settings"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"superuser"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all Tags.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://api.getscopeai.com/v1/tags</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>relevant</td>
+<td>true</td>
+<td>Return only tickets that are relevant to a company.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-tag'>Get a Specific Tag</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.getscopeai.com/v1/tags/4"</span>
+  -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"superuser"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific Tag.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://api.getscopeai.com/v1/tags/7</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the Tag to retrieve</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<p>The ScopeAI API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request was created incorrectly.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Invalid API key.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- You do not have access to that record.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- Resource not found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to an invalid method or one that is currently not supported.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server.Try again later or contact us: help@getscopeai.com</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
