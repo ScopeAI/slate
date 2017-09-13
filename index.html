@@ -293,8 +293,8 @@ You must replace <code>pLac3keYh3r3</code> with your personal API key.
 <blockquote>
 <p>Example paging header</p>
 </blockquote>
-<pre class="highlight plaintext"><code>Link: &lt;https://api.getscopeai.com/v1/tickets?page=2&amp;per_page=2&gt;; rel="next",
-&lt;https://api.getscopeai.com/v1/tickets?page=474&amp;per_page=2&gt;; rel="last"
+<pre class="highlight plaintext"><code>Link: &lt;https://api.getscopeai.com/v1/tickets?page=2&amp;per_page=25&gt;; rel="next",
+&lt;https://api.getscopeai.com/v1/tickets?page=474&amp;per_page=25&gt;; rel="last"
 </code></pre>
 <p>API methods that return a collection of results are always paginated. Paginated results will include a <code>Link</code> (see <a href="https://tools.ietf.org/html/rfc5988">RFC-5988</a>) response header with the following information.</p>
 
@@ -304,7 +304,7 @@ You must replace <code>pLac3keYh3r3</code> with your personal API key.
 <li><code>last</code>. The corresponding URL is the link to the last page.</li>
 </ul>
 
-<p>Note that when this header is not set, there is only one page, the first page, of results.</p>
+<p>Note that when this header is not set, there is only one page, the first page, of results. You may specify how many records you want to recieve with the <code>per_page</code> parameter.</p>
 <h1 id='tickets'>Tickets</h1><h2 id='the-ticket-object'>The Ticket Object</h2><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
@@ -357,7 +357,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <td>A list of objects that represent the relationship this ticket has with a tag. Contains the <code>tag_id</code> which can be used to obtain the tag object, the <code>salience_score</code> which reflects the tags relevance to the overall text and <code>sentiment_score</code> which, if available, represents the sentiment of said tag.</td>
 </tr>
 </tbody></table>
-<h2 id='get-all-tickets'>Get All Tickets</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.getscopeai.com/v1/tickets?start_date=1502607600"</span>
+<h2 id='get-all-tickets'>Get All Tickets</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/tickets?start_date=1502607600"</span>
   -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
 </code></pre>
 <blockquote>
@@ -406,7 +406,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 </span></code></pre>
 <p>This endpoint retrieves all Tickets.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://api.getscopeai.com/v1/tickets</code></p>
+<p><code>GET https://api.getscopeai.com/v1/tickets</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -426,7 +426,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <td>Return only tickets that were created before this timestamp. Timestamp must be in UNIX time.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-ticket'>Get a Specific Ticket</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.getscopeai.com/v1/tickets/3"</span>
+<h2 id='get-a-specific-ticket'>Get a Specific Ticket</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/tickets/3"</span>
   -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
 </code></pre>
 <blockquote>
@@ -446,7 +446,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 </span></code></pre>
 <p>This endpoint retrieves a specific Ticket.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://api.getscopeai.com/v1/tickets/&lt;ID&gt;</code></p>
+<p><code>GET https://api.getscopeai.com/v1/tickets/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -493,7 +493,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <td>A boolean representing whether the tag is relevant to the company.</td>
 </tr>
 </tbody></table>
-<h2 id='get-all-tags'>Get All Tags</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.getscopeai.com/v1/tags?relevant=true"</span>
+<h2 id='get-all-tags'>Get All Tags</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/tags?relevant=true"</span>
   -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
 </code></pre>
 <blockquote>
@@ -519,7 +519,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 </span></code></pre>
 <p>This endpoint retrieves all Tags.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://api.getscopeai.com/v1/tags</code></p>
+<p><code>GET https://api.getscopeai.com/v1/tags</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -534,7 +534,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <td>Return only tickets that are relevant to a company.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-tag'>Get a Specific Tag</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.getscopeai.com/v1/tags/4"</span>
+<h2 id='get-a-specific-tag'>Get a Specific Tag</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/tags/4"</span>
   -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
 </code></pre>
 <blockquote>
@@ -550,7 +550,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 </span></code></pre>
 <p>This endpoint retrieves a specific Tag.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET http://api.getscopeai.com/v1/tags/7</code></p>
+<p><code>GET https://api.getscopeai.com/v1/tags/7</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
