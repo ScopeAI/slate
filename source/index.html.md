@@ -49,8 +49,8 @@ You must replace <code>pLac3keYh3r3</code> with your personal API key.
 > Example paging header
 
 ```
-Link: <https://api.getscopeai.com/v1/tickets?page=2&per_page=2>; rel="next",
-<https://api.getscopeai.com/v1/tickets?page=474&per_page=2>; rel="last"
+Link: <https://api.getscopeai.com/v1/tickets?page=2&per_page=25>; rel="next",
+<https://api.getscopeai.com/v1/tickets?page=474&per_page=25>; rel="last"
 ```
 
 API methods that return a collection of results are always paginated. Paginated results will include a `Link` (see [RFC-5988](https://tools.ietf.org/html/rfc5988)) response header with the following information.
@@ -59,7 +59,7 @@ API methods that return a collection of results are always paginated. Paginated 
 * `prev`. The corresponding URL is the link to the previous page.
 * `last`. The corresponding URL is the link to the last page.
 
-Note that when this header is not set, there is only one page, the first page, of results.
+Note that when this header is not set, there is only one page, the first page, of results. You may specify how many records you want to recieve with the `per_page` parameter.
 
 # Tickets
 
@@ -106,7 +106,7 @@ tag_relationships | A list of objects that represent the relationship this ticke
 ## Get All Tickets
 
 ```shell
-curl "http://api.getscopeai.com/v1/tickets?start_date=1502607600"
+curl "https://api.getscopeai.com/v1/tickets?start_date=1502607600"
   -H "Authorization: Token token=pLac3keYh3r3"
 ```
 
@@ -159,7 +159,7 @@ This endpoint retrieves all Tickets.
 
 ### HTTP Request
 
-`GET http://api.getscopeai.com/v1/tickets`
+`GET https://api.getscopeai.com/v1/tickets`
 
 ### Query Parameters
 
@@ -172,7 +172,7 @@ end_date | true | Return only tickets that were created before this timestamp. T
 ## Get a Specific Ticket
 
 ```shell
-curl "http://api.getscopeai.com/v1/tickets/3"
+curl "https://api.getscopeai.com/v1/tickets/3"
   -H "Authorization: Token token=pLac3keYh3r3"
 ```
 
@@ -196,7 +196,7 @@ This endpoint retrieves a specific Ticket.
 
 ### HTTP Request
 
-`GET http://api.getscopeai.com/v1/tickets/<ID>`
+`GET https://api.getscopeai.com/v1/tickets/<ID>`
 
 ### URL Parameters
 
@@ -234,7 +234,7 @@ relevant | A boolean representing whether the tag is relevant to the company.
 ## Get All Tags
 
 ```shell
-curl "http://api.getscopeai.com/v1/tags?relevant=true"
+curl "https://api.getscopeai.com/v1/tags?relevant=true"
   -H "Authorization: Token token=pLac3keYh3r3"
 ```
 
@@ -264,7 +264,7 @@ This endpoint retrieves all Tags.
 
 ### HTTP Request
 
-`GET http://api.getscopeai.com/v1/tags`
+`GET https://api.getscopeai.com/v1/tags`
 
 ### Query Parameters
 
@@ -275,7 +275,7 @@ relevant | true | Return only tickets that are relevant to a company.
 ## Get a Specific Tag
 
 ```shell
-curl "http://api.getscopeai.com/v1/tags/4"
+curl "https://api.getscopeai.com/v1/tags/4"
   -H "Authorization: Token token=pLac3keYh3r3"
 ```
 
@@ -295,7 +295,7 @@ This endpoint retrieves a specific Tag.
 
 ### HTTP Request
 
-`GET http://api.getscopeai.com/v1/tags/7`
+`GET https://api.getscopeai.com/v1/tags/7`
 
 ### URL Parameters
 
