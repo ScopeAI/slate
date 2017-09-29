@@ -239,6 +239,9 @@
                   <li>
                     <a href="#get-a-specific-ticket" class="toc-h2 toc-link" data-title="Tickets">Get a Specific Ticket</a>
                   </li>
+                  <li>
+                    <a href="#create-a-ticket" class="toc-h2 toc-link" data-title="Tickets">Create a Ticket</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -459,6 +462,45 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <td>The ID of the Ticket to retrieve</td>
 </tr>
 </tbody></table>
+<h2 id='create-a-ticket'>Create a Ticket</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/tickets"</span> -X POST
+  -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
+</code></pre>
+<blockquote>
+<p>The above command expects JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Gary. </span><span class="se">\n</span><span class="s2"> What's the price of adding another superuser? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Bill </span><span class="se">\n</span><span class="s2"> CEO of Mirrors Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original_html"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt; Hey Gary. &lt;</span><span class="se">\b</span><span class="s2">r&gt; What's the price of adding another superuser? &lt;</span><span class="se">\b</span><span class="s2">r&gt; Best, &lt;</span><span class="se">\b</span><span class="s2">r&gt; Bill </span><span class="se">\n</span><span class="s2"> CEO of Mirrors Inc. </span><span class="se">\n</span><span class="s2"> &lt;/div&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a Ticket.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://api.getscopeai.com/v1/tickets</code></p>
+<h3 id='json-body-parameters'>JSON Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>external_id</td>
+<td>false</td>
+<td>ID of ticket for an external system of record</td>
+</tr>
+<tr>
+<td>original_text</td>
+<td>false</td>
+<td>Ticket text.</td>
+</tr>
+<tr>
+<td>original_html</td>
+<td>false</td>
+<td>HTML representation of ticket.</td>
+</tr>
+</tbody></table>
 <h1 id='tags'>Tags</h1><h2 id='the-tag-object'>The Tag Object</h2><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settings"</span><span class="p">,</span><span class="w">
@@ -518,7 +560,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all Tags.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://api.getscopeai.com/v1/tags</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
@@ -549,7 +591,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific Tag.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://api.getscopeai.com/v1/tags/7</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
