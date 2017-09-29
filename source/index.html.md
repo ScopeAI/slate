@@ -205,6 +205,42 @@ Parameter | Description
 ID | The ID of the Ticket to retrieve
 
 
+## Create a Ticket
+
+```shell
+curl "https://api.getscopeai.com/v1/tickets" -X POST
+  -H "Authorization: Token token=pLac3keYh3r3"
+```
+
+> The above command expects JSON structured like this:
+
+```json
+ {
+    "external_id": 564652,
+    "original_text": "Hey Gary. \n What's the price of adding another superuser? \n Best, \n Bill \n CEO of Mirrors Inc. \n",
+    "original_html": "<div> Hey Gary. <\br> What's the price of adding another superuser? <\br> Best, <\br> Bill \n CEO of Mirrors Inc. \n </div>",
+  }
+```
+
+This endpoint creates a Ticket.
+
+
+### HTTP Request
+
+`POST https://api.getscopeai.com/v1/tickets`
+
+
+### JSON Body Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+external_id | false | ID of ticket for an external system of record
+original_text | false | Ticket text.
+original_html | false | HTML representation of ticket.
+
+
+
+
 # Tags
 
 ## The Tag Object
