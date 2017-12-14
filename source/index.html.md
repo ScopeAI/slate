@@ -103,6 +103,41 @@ cleanest_body | The ticket body after ScopeAI has scrapped off headers, footers,
 tag_relationships | A list of objects that represent the relationship this ticket has with a tag. Contains the `tag_id` which can be used to obtain the tag object, the `salience_score` which reflects the tags relevance to the overall text and `sentiment_score` which, if available, represents the sentiment of said tag.
 
 
+
+## Create a Ticket
+
+```shell
+curl "https://api.getscopeai.com/v1/tickets" -X POST
+  -H "Authorization: Token token=pLac3keYh3r3"
+```
+
+> The above command expects JSON structured like this:
+
+```json
+ {
+    "external_id": 564652,
+    "original_text": "Hey Gary. \n What's the price of adding another superuser? \n Best, \n Bill \n CEO of Mirrors Inc. \n",
+    "original_html": "<div> Hey Gary. <\br> What's the price of adding another superuser? <\br> Best, <\br> Bill \n CEO of Mirrors Inc. \n </div>",
+  }
+```
+
+This endpoint creates a Ticket.
+
+
+### HTTP Request
+
+`POST https://api.getscopeai.com/v1/tickets`
+
+
+### JSON Body Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+external_id | false | ID of ticket for an external system of record
+original_text | false | Ticket text.
+original_html | false | HTML representation of ticket.
+
+
 ## Get All Tickets
 
 ```shell
@@ -205,40 +240,6 @@ Parameter | Description
 ID | The ID of the Ticket to retrieve
 
 
-## Create a Ticket
-
-```shell
-curl "https://api.getscopeai.com/v1/tickets" -X POST
-  -H "Authorization: Token token=pLac3keYh3r3"
-```
-
-> The above command expects JSON structured like this:
-
-```json
- {
-    "external_id": 564652,
-    "original_text": "Hey Gary. \n What's the price of adding another superuser? \n Best, \n Bill \n CEO of Mirrors Inc. \n",
-    "original_html": "<div> Hey Gary. <\br> What's the price of adding another superuser? <\br> Best, <\br> Bill \n CEO of Mirrors Inc. \n </div>",
-  }
-```
-
-This endpoint creates a Ticket.
-
-
-### HTTP Request
-
-`POST https://api.getscopeai.com/v1/tickets`
-
-
-### JSON Body Parameters
-
-Parameter | Required | Description
---------- | ------- | -----------
-external_id | false | ID of ticket for an external system of record
-original_text | false | Ticket text.
-original_html | false | HTML representation of ticket.
-
-
 
 
 # Tags
@@ -266,6 +267,7 @@ name | The textual representation of the tag.
 score | A number representing how salient the tag is to a company.
 tickets_count | The number of tickets that this tag is associated with.
 relevant | A boolean representing whether the tag is relevant to the company.
+similar_tags | A list of tags that are semantically similar to that tag.
 
 ## Get All Tags
 
