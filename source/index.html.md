@@ -68,6 +68,7 @@ Note that when this header is not set, there is only one page, the first page, o
   {
     "id": 1,
     "external_id": 564652,
+    "conversation_id": 21212,
     "source": "zendesk",
     "original_text": "Hey Mary. \n Would it be possible to delete a user from
     the company settings page? \n Best, \n Robert \n CEO of Rosemary Inc. \n",
@@ -98,6 +99,7 @@ Attribute | Description
 --------- | ------- | -----------
 source | The system of record from where the customer service ticket was imported.
 external_id | The id of the ticket from the system of record from where the ticket was imported.
+conversation_id | An id to identify the relationship between tickets that are in the same conversation. For example all tickets from one chat session.
 original_text | The text of the ticket that was received from the system of record.
 cleanest_body | The ticket body after ScopeAI has scrapped off headers, footers, and other extraneous text.
 tag_relationships | A list of objects that represent the relationship this ticket has with a tag. Contains the `tag_id` which can be used to obtain the tag object, the `salience_score` which reflects the tags relevance to the overall text and `sentiment_score` which, if available, represents the sentiment of said tag.
@@ -116,6 +118,7 @@ curl "https://api.getscopeai.com/v1/tickets" -X POST
 ```json
  {
     "external_id": 564652,
+    "conversation_id": 32311,
     "original_text": "Hey Gary. \n What's the price of adding another superuser? \n Best, \n Bill \n CEO of Mirrors Inc. \n",
     "original_html": "<div> Hey Gary. <\br> What's the price of adding another superuser? <\br> Best, <\br> Bill \n CEO of Mirrors Inc. \n </div>",
   }
@@ -152,6 +155,7 @@ curl "https://api.getscopeai.com/v1/tickets?start_date=1502607600"
   {
     "id": 1,
     "external_id": 564652,
+    "conversation_id": 21212,
     "source": "zendesk",
     "original_text": "Hey Mary. \n Would it be possible to delete a user from the company settings page? \n Best, \n Robert \n CEO of Rosemary Inc. \n",
     "cleanest_body": "Would it be possible to delete a user from the company settings page?",
@@ -171,6 +175,7 @@ curl "https://api.getscopeai.com/v1/tickets?start_date=1502607600"
   {
     "id": 3,
     "external_id": 564652,
+    "conversation_id": 32311,
     "source": "zendesk",
     "original_text": "Hey Gary. \n What's the price of adding another superuser? \n Best, \n Bill \n CEO of Mirrors Inc. \n",
     "cleanest_body": "What's the price of adding another superuser?",
@@ -200,8 +205,79 @@ This endpoint retrieves all Tickets.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-start_date | false | Return only tickets that were created after this timestamp. Timestamp must be in UNIX time.
-end_date | true | Return only tickets that were created before this timestamp. Timestamp must be in UNIX time.
+start_date | 14 days ago | Return only tickets that were created after this timestamp. Timestamp must be in UNIX time.
+end_date | Current timedate | Return only tickets that were created before this timestamp. Timestamp must be in UNIX time.
+
+
+
+
+## Search Tickets
+
+```shell
+curl "https://api.getscopeai.com/v1/search?start_date=1502607600?query=price"
+  -H "Authorization: Token token=pLac3keYh3r3"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 1,
+    "external_id": 89652,
+    "conversation_id": 22312,
+    "source": "zendesk",
+    "original_text": "Hey John. \n Is it possible to reduce the price? \n Best, \n Francis \n CTO of EndUp Inc. \n",
+    "cleanest_body": " Is it possible to reduce the price? ",
+    "tag_relationships": [
+      {
+        "tag_id": 9,
+        "salience": 0.4,
+        "sentiment": 0.2
+      },
+      {
+        "tag_id": 63,
+        "salience": 0.9,
+        "sentiment": 0.1
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "external_id": 564652,
+    "conversation_id": 32311,
+    "source": "zendesk",
+    "original_text": "Hey Gary. \n What's the price of adding another superuser? \n Best, \n Bill \n CEO of Mirrors Inc. \n",
+    "cleanest_body": "What's the price of adding another superuser?",
+    "tag_relationships": [
+      {
+        "tag_id": 32,
+        "salience": 0.9,
+        "sentiment": 0.3
+      },
+      {
+        "tag_id": 11,
+        "salience": 0.4,
+        "sentiment": 0.6
+      }
+    ]
+
+  }
+```
+
+This endpoint retrieves all tickets that match the given query. The query is searched against both the `original_text` and `cleanest_body`.
+
+### HTTP Request
+
+`GET https://api.getscopeai.com/v1/tickets/search`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+query | nil | The set of words that you want to search for in tickets
+start_date | 14 days ago | Return only tickets that were created after this timestamp. Timestamp must be in UNIX time.
+end_date | Current timedate | Return only tickets that were created before this timestamp. Timestamp must be in UNIX time.
 
 
 ## Get a Specific Ticket
@@ -217,6 +293,7 @@ curl "https://api.getscopeai.com/v1/tickets/3"
  {
     "id": 3,
     "external_id": 564652,
+    "conversation_id": 32311,
     "source": "zendesk",
     "original_text": "Hey Gary. \n What's the price of adding another superuser? \n Best, \n Bill \n CEO of Mirrors Inc. \n",
     "cleanest_body": "What's the price of adding another superuser?",
@@ -240,7 +317,42 @@ Parameter | Description
 ID | The ID of the Ticket to retrieve
 
 
+## Find a Specific Ticket
 
+```shell
+curl "https://api.getscopeai.com/v1/tickets/find_by?external_id=564652"
+  -H "Authorization: Token token=pLac3keYh3r3"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+ {
+    "id": 3,
+    "external_id": 564652,
+    "conversation_id": 32311,
+    "source": "zendesk",
+    "original_text": "Hey Gary. \n What's the price of adding another superuser? \n Best, \n Bill \n CEO of Mirrors Inc. \n",
+    "cleanest_body": "What's the price of adding another superuser?",
+    "tag_relationships": [
+
+    ]
+
+  }
+```
+
+This endpoint retrieves a specific ticket by the parameters specified in the request.
+
+### HTTP Request
+
+`GET https://api.getscopeai.com/v1/tickets/find_by`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+external_id | The ID of the ticket from the system of record from where the ticket was imported.
+conversation_id | An ID to identify the relationship between tickets that are in the same conversation. For example all tickets from one chat session.
 
 # Tags
 
