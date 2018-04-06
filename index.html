@@ -228,6 +228,23 @@
             <a href="#pagination" class="toc-h1 toc-link" data-title="Pagination">Pagination</a>
           </li>
           <li>
+            <a href="#conversations" class="toc-h1 toc-link" data-title="Conversations">Conversations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-conversation-object" class="toc-h2 toc-link" data-title="Conversations">The Conversation Object</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-conversation" class="toc-h2 toc-link" data-title="Conversations">Create a Conversation</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-conversation" class="toc-h2 toc-link" data-title="Conversations">Get a Specific Conversation</a>
+                  </li>
+                  <li>
+                    <a href="#find-a-specific-conversation" class="toc-h2 toc-link" data-title="Conversations">Find a Specific Conversation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#tickets" class="toc-h1 toc-link" data-title="Tickets">Tickets</a>
               <ul class="toc-list-h2">
                   <li>
@@ -248,6 +265,9 @@
                   <li>
                     <a href="#find-a-specific-ticket" class="toc-h2 toc-link" data-title="Tickets">Find a Specific Ticket</a>
                   </li>
+                  <li>
+                    <a href="#add-tag-to-a-ticket" class="toc-h2 toc-link" data-title="Tickets">Add Tag to a Ticket</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -257,10 +277,16 @@
                     <a href="#the-tag-object" class="toc-h2 toc-link" data-title="Tags">The Tag Object</a>
                   </li>
                   <li>
+                    <a href="#create-a-tag" class="toc-h2 toc-link" data-title="Tags">Create a Tag</a>
+                  </li>
+                  <li>
                     <a href="#get-all-tags" class="toc-h2 toc-link" data-title="Tags">Get All Tags</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-tag" class="toc-h2 toc-link" data-title="Tags">Get a Specific Tag</a>
+                  </li>
+                  <li>
+                    <a href="#find-a-specific-tag" class="toc-h2 toc-link" data-title="Tags">Find a Specific Tag</a>
                   </li>
               </ul>
           </li>
@@ -314,10 +340,181 @@ You must replace <code>pLac3keYh3r3</code> with your personal API key.
 </ul>
 
 <p>Note that when this header is not set, there is only one page, the first page, of results. You may specify how many records you want to recieve with the <code>per_page</code> parameter.</p>
+<h1 id='conversations'>Conversations</h1><h2 id='the-conversation-object'>The Conversation Object</h2><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21212"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"564652"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"conversation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21212</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Mary. </span><span class="se">\n</span><span class="s2"> Would it be possible to delete a user from
+            the company settings page? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Robert </span><span class="se">\n</span><span class="s2"> CEO of Rosemary Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cleanest_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Would it be possible to delete a user from the company settings page?"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag_relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A Conversations represents a collection of Tickets from the same user around the same time. The definition of a Conversation often depends on the system of record from which the Ticket comes from.</p>
+<h3 id='notable-attributes'>Notable Attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>source</td>
+<td>The system of record from where the conversation was imported.</td>
+</tr>
+<tr>
+<td>external_id</td>
+<td>The id of the conversation from the system of record from where the conversation was imported.</td>
+</tr>
+<tr>
+<td>tickets</td>
+<td>The set of Tickets corresponding to that Conversation.</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-conversation'>Create a Conversation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/conversation"</span> -X POST
+  -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
+</code></pre>
+<blockquote>
+<p>The above command expects JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"564652"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a Conversation.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.getscopeai.com/v1/conversation</code></p>
+<h3 id='json-body-parameters'>JSON Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>external_id</td>
+<td>false</td>
+<td>String</td>
+<td>ID of conversation for an external system of record. Should be a of type</td>
+</tr>
+<tr>
+<td>created</td>
+<td>false</td>
+<td>Integer</td>
+<td>Time at which the object was created. Measured in seconds since the Unix epoch.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-conversation'>Get a Specific Conversation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/conversation/3"</span>
+  -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21212"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"conversation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21212</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Mary. </span><span class="se">\n</span><span class="s2"> Would it be possible to delete a user from
+            the company settings page? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Robert </span><span class="se">\n</span><span class="s2"> CEO of Rosemary Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cleanest_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Would it be possible to delete a user from the company settings page?"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag_relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"salience"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint retrieves a specific Conversation.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.getscopeai.com/v1/conversation/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the Conversation to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='find-a-specific-conversation'>Find a Specific Conversation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/conversations/find_by?external_id=L3123
+  -H "</span>Authorization: Token <span class="nv">token</span><span class="o">=</span>pLac3keYh3r3<span class="s2">"
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"L3123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">]</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific Conversation by the parameters specified in the request.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://api.getscopeai.com/v1/conversations/find_by</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>external_id</td>
+<td>The ID of the Conversation from the system of record from where the ticket was imported.</td>
+</tr>
+</tbody></table>
 <h1 id='tickets'>Tickets</h1><h2 id='the-ticket-object'>The Ticket Object</h2><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"564652"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"conversation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21212</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Mary. </span><span class="se">\n</span><span class="s2"> Would it be possible to delete a user from
     the company settings page? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Robert </span><span class="se">\n</span><span class="s2"> CEO of Rosemary Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
@@ -339,7 +536,7 @@ You must replace <code>pLac3keYh3r3</code> with your personal API key.
 </span></code></pre>
 <p>A ticket represents a message from a customer to a company. ScopeAI&#39;s definition of a ticket
 is likely to be equivalent to your system of record&#39;s definition of a ticket.</p>
-<h3 id='notable-attributes'>Notable Attributes</h3>
+<h3 id='notable-attributes-2'>Notable Attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -357,6 +554,10 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <tr>
 <td>conversation_id</td>
 <td>An id to identify the relationship between tickets that are in the same conversation. For example all tickets from one chat session.</td>
+</tr>
+<tr>
+<td>created</td>
+<td>Time at which the object was created. Measured in seconds since the Unix epoch.</td>
 </tr>
 <tr>
 <td>original_text</td>
@@ -378,36 +579,60 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <p>The above command expects JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"564652"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"conversation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32311</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"robert@foo.com"</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
     </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Gary. </span><span class="se">\n</span><span class="s2"> What's the price of adding another superuser? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Bill </span><span class="se">\n</span><span class="s2"> CEO of Mirrors Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"original_html"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt; Hey Gary. &lt;</span><span class="se">\b</span><span class="s2">r&gt; What's the price of adding another superuser? &lt;</span><span class="se">\b</span><span class="s2">r&gt; Best, &lt;</span><span class="se">\b</span><span class="s2">r&gt; Bill </span><span class="se">\n</span><span class="s2"> CEO of Mirrors Inc. </span><span class="se">\n</span><span class="s2"> &lt;/div&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a Ticket.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>POST https://api.getscopeai.com/v1/tickets</code></p>
-<h3 id='json-body-parameters'>JSON Body Parameters</h3>
+<h3 id='json-body-parameters-2'>JSON Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Required</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>external_id</td>
 <td>false</td>
+<td>String</td>
 <td>ID of ticket for an external system of record</td>
+</tr>
+<tr>
+<td>conversation_id</td>
+<td>true</td>
+<td>Integer</td>
+<td>The ID of the conversation this ticket belongs to.</td>
+</tr>
+<tr>
+<td>sender</td>
+<td>false</td>
+<td>String</td>
+<td>An identifier for the customer who sent the email. You may use email, username, or a numerical representation.</td>
+</tr>
+<tr>
+<td>created</td>
+<td>false</td>
+<td>Integer</td>
+<td>Time at which the object was created. Measured in seconds since the Unix epoch.</td>
 </tr>
 <tr>
 <td>original_text</td>
 <td>false</td>
+<td>String</td>
 <td>Ticket text.</td>
 </tr>
 <tr>
 <td>original_html</td>
 <td>false</td>
+<td>String</td>
 <td>HTML representation of ticket.</td>
 </tr>
 </tbody></table>
@@ -420,8 +645,9 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"564652"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"conversation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21212</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Mary. </span><span class="se">\n</span><span class="s2"> Would it be possible to delete a user from the company settings page? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Robert </span><span class="se">\n</span><span class="s2"> CEO of Rosemary Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cleanest_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Would it be possible to delete a user from the company settings page?"</span><span class="p">,</span><span class="w">
@@ -440,8 +666,9 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"564652"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"conversation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32311</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Gary. </span><span class="se">\n</span><span class="s2"> What's the price of adding another superuser? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Bill </span><span class="se">\n</span><span class="s2"> CEO of Mirrors Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cleanest_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What's the price of adding another superuser?"</span><span class="p">,</span><span class="w">
@@ -461,7 +688,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all Tickets.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://api.getscopeai.com/v1/tickets</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -491,9 +718,10 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">89652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89652"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"conversation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22312</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
     </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey John. </span><span class="se">\n</span><span class="s2"> Is it possible to reduce the price? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Francis </span><span class="se">\n</span><span class="s2"> CTO of EndUp Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cleanest_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Is it possible to reduce the price? "</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tag_relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -511,7 +739,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"564652"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"conversation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32311</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Gary. </span><span class="se">\n</span><span class="s2"> What's the price of adding another superuser? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Bill </span><span class="se">\n</span><span class="s2"> CEO of Mirrors Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
@@ -532,7 +760,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all tickets that match the given query. The query is searched against both the <code>original_text</code> and <code>cleanest_body</code>.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://api.getscopeai.com/v1/tickets/search</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
@@ -566,8 +794,9 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"564652"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"conversation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32311</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Gary. </span><span class="se">\n</span><span class="s2"> What's the price of adding another superuser? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Bill </span><span class="se">\n</span><span class="s2"> CEO of Mirrors Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cleanest_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What's the price of adding another superuser?"</span><span class="p">,</span><span class="w">
@@ -578,9 +807,9 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific Ticket.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://api.getscopeai.com/v1/tickets/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -600,8 +829,9 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">564652</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"564652"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"conversation_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32311</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zendesk"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"original_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey Gary. </span><span class="se">\n</span><span class="s2"> What's the price of adding another superuser? </span><span class="se">\n</span><span class="s2"> Best, </span><span class="se">\n</span><span class="s2"> Bill </span><span class="se">\n</span><span class="s2"> CEO of Mirrors Inc. </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cleanest_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What's the price of adding another superuser?"</span><span class="p">,</span><span class="w">
@@ -612,9 +842,9 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific ticket by the parameters specified in the request.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://api.getscopeai.com/v1/tickets/find_by</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -630,9 +860,37 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <td>An ID to identify the relationship between tickets that are in the same conversation. For example all tickets from one chat session.</td>
 </tr>
 </tbody></table>
+<h2 id='add-tag-to-a-ticket'>Add Tag to a Ticket</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/tickets/3/add_tag"</span> -X POST
+  -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
+</code></pre>
+<blockquote>
+<p>The above command expects JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint adds a <code>Tag</code> to a Ticket</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST https://api.getscopeai.com/v1/tickets/3/add_tag</code></p>
+<h3 id='json-body-parameters-3'>JSON Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tag_id</td>
+<td>true</td>
+<td>The ID of the tag to be added to this ticket.</td>
+</tr>
+</tbody></table>
 <h1 id='tags'>Tags</h1><h2 id='the-tag-object'>The Tag Object</h2><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settings"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
     </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tickets_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="s2">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -640,7 +898,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>A tag represents an entity or &#39;subject&#39; that has been discovered across multiple customer conversations.</p>
-<h3 id='notable-attributes-2'>Notable Attributes</h3>
+<h3 id='notable-attributes-3'>Notable Attributes</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -649,7 +907,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>The textual representation of the tag.</td>
+<td>A unique textual representation of the tag.</td>
 </tr>
 <tr>
 <td>score</td>
@@ -668,6 +926,42 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <td>A list of tags that are semantically similar to that tag.</td>
 </tr>
 </tbody></table>
+<h2 id='create-a-tag'>Create a Tag</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/tags"</span> -X POST
+  -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
+</code></pre>
+<blockquote>
+<p>The above command expects JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settings"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a Tag.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>POST https://api.getscopeai.com/v1/tags</code></p>
+<h3 id='json-body-parameters-4'>JSON Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>true</td>
+<td>String</td>
+<td>A unique textual representation of the tag.</td>
+</tr>
+<tr>
+<td>relevant</td>
+<td>false</td>
+<td>Boolean</td>
+<td>A boolean representing whether the tag is relevant to the company. If not supplied it will default to <code>true</code></td>
+</tr>
+</tbody></table>
 <h2 id='get-all-tags'>Get All Tags</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/tags?relevant=true"</span>
   -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
 </code></pre>
@@ -678,6 +972,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settings"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
     </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tickets_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="s2">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -686,6 +981,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"superuser"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
     </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tickets_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
     </span><span class="s2">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -693,7 +989,7 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all Tags.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://api.getscopeai.com/v1/tags</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
@@ -715,18 +1011,19 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"superuser"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
     </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tickets_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
     </span><span class="s2">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific Tag.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://api.getscopeai.com/v1/tags/7</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -736,6 +1033,36 @@ is likely to be equivalent to your system of record&#39;s definition of a ticket
 <tr>
 <td>ID</td>
 <td>The ID of the Tag to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='find-a-specific-tag'>Find a Specific Tag</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.getscopeai.com/v1/tags/find_by?name=house"</span>
+  -H <span class="s2">"Authorization: Token token=pLac3keYh3r3"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">343</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"house"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1522874599</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific Tag using the parameters specified in the request.</p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>GET https://api.getscopeai.com/v1/tags/find_by</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>The textual representation of the tag.</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
